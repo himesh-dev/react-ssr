@@ -4,6 +4,8 @@ const { merge } = require('webpack-merge');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const webpackBase = require('./webpack.base');
 const paths = require('../paths');
+const plugins = require('./plugins');
+
 
 const isDev = process.env.NODE_ENV === 'production' ? false : true;
 
@@ -12,8 +14,8 @@ const webpackClient = {
   target: 'web',
   output: {
     path: path.join(paths.buildClient, paths.publicPath),
-    filename: 'bundle.js',
-    chunkFilename: '[name].[contenthash:8].chunk.js',
+    filename: 'js/bundle.[contenthash:8].js',
+    chunkFilename: 'js/[name].[contenthash:8].chunk.js',
     publicPath: paths.publicPath,
   },
   plugins: [
@@ -24,6 +26,7 @@ const webpackClient = {
       },
     }),
     new webpack.HotModuleReplacementPlugin(),
+    ...plugins,
     isDev &&
       new ReactRefreshWebpackPlugin({
         overlay: {

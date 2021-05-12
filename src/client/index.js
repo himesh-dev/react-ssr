@@ -7,8 +7,10 @@ function render(_App) {
 }
 
 if (module.hot) {
+  console.log('HOT MODULE', module.hot);
   module.hot.accept('../shared/App.js', () => {
-    const NextApp = require('../shared/App').default;
+    console.log('HOT MODULE IN');
+    const NextApp = require('../shared/App.js');
     render(NextApp);
   });
 }

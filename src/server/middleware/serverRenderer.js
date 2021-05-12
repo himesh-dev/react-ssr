@@ -6,5 +6,8 @@ import Html from '../components/HTML';
 export default function serverRenderer(req, res) {
   const html = renderToString(<App />);
 
-  res.send('<!doctype html>' + renderToString(<Html>{html}</Html>));
+  // res.send('<!doctype html>' + renderToString(<Html>{html}</Html>));
+  const UpdatedHtml = Html(html);
+  console.log('UpdatedHtml ---->', UpdatedHtml);
+  res.send(UpdatedHtml);
 }
