@@ -6,7 +6,6 @@ const webpackBase = require('./webpack.base');
 const paths = require('../paths');
 const plugins = require('./plugins');
 
-
 const isDev = process.env.NODE_ENV === 'production' ? false : true;
 
 const webpackClient = {
@@ -19,6 +18,7 @@ const webpackClient = {
     publicPath: paths.publicPath,
   },
   plugins: [
+    ...plugins,
     new webpack.DefinePlugin({
       __isBrowser__: 'true',
       'process.env': {
@@ -26,7 +26,6 @@ const webpackClient = {
       },
     }),
     new webpack.HotModuleReplacementPlugin(),
-    ...plugins,
     isDev &&
       new ReactRefreshWebpackPlugin({
         overlay: {
@@ -54,6 +53,6 @@ const webpackClient = {
   },
 };
 
-const webpackMerge = merge(webpackBase, webpackClient);
+const webpackMerge = merge(webpackBase('client'), webpackClient);
 
 module.exports = webpackMerge;
