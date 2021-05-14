@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 const App = () => {
   const clickHandler = () => {
@@ -6,7 +7,9 @@ const App = () => {
   };
   return (
     <div>
-      <button onClick={clickHandler}>clickme128</button>
+      <button onClick={clickHandler} className="button">
+        clickme128
+      </button>
     </div>
   );
 };
