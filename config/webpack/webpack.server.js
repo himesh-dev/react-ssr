@@ -4,7 +4,7 @@ const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
 const webpackBase = require('./webpack.base');
 const paths = require('../paths');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const webpackServer = {
   entry: path.join(process.cwd(), 'src/server/index.js'),
@@ -19,9 +19,9 @@ const webpackServer = {
     new webpack.DefinePlugin({
       __isBrowser__: 'false',
     }),
-    // new MiniCssExtractPlugin({
-    //   filename: 'styles/style.css',
-    // }),
+    new MiniCssExtractPlugin({
+      // filename: 'styles/style.css',
+    }),
   ],
 };
 const webpackMerge = merge(webpackBase('server'), webpackServer);
