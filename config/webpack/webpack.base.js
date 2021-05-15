@@ -35,10 +35,36 @@ const rulesClient = [
   {
     test: /\.(png|svg|jpg|gif)$/,
     use: {
-      loader: 'file-loader',
-      options: { outputPath: 'static/assets/' },
+      loader: 'url-loader',
+      options: {
+        mimetype: 'image/png',
+        name: '[name].[ext]',
+        publicPath: '/static/assets',
+        outputPath: '/assets',
+        // emitFile: true,
+        limit: false,
+      },
     },
   },
+  // {
+  //   test: /\.(png|jpe?g|gif|svg)$/,
+  //   // type: 'asset/resource',
+  //   // generator: {
+  //   //   filename: 'assets/[name].[hash:8].[ext]',
+  //   // },
+  // },
+  // {
+  //   test: /\.(png|svg|jpg|gif)$/,
+  //   use: {
+  //     loader: 'file-loader',
+  //     options: {
+  //       name: '[name].[ext]',
+  //       publicPath: 'static/',
+  //       outputPath: 'assets/images',
+  //       esModule: false,
+  //     },
+  //   },
+  // },
 ];
 const rulesServer = [
   {
@@ -55,13 +81,56 @@ const rulesServer = [
     test: /\.css$/i,
     use: [
       {
-        loader: 'style-loader',
+        loader: MiniCssExtractPlugin.loader,
       },
       {
         loader: 'css-loader',
       },
     ],
   },
+  {
+    test: /\.(png|jpe?g|gif|svg)$/,
+    // type: 'asset/resource',
+    loader: require.resolve('file-loader'),
+    options: {
+      mimetype: 'image/png',
+      name: '[name].[ext]',
+      publicPath: '/static/assets',
+      outputPath: '/assets',
+      // esModule: false,
+      emitFile: true,
+      limit: false,
+    },
+    // generator: {
+    //   filename: 'assets/[name].[hash:8].[ext]',
+    // },
+  },
+  // {
+  //   test: /\.(png|svg|jpg|gif)$/,
+  //   use: {
+  //     loader: 'file-loader',
+  //     options: {
+  //       // emitFile: false,
+  //       // limit: false,
+  //       // mimetype: 'image/png',
+  //       // encoding: 'utf8',
+  //       esModule: false,
+  //     },
+  //   },
+  // },
+  // {
+  //   test: /\.(png|svg|jpg|gif)$/,
+  //   use: {
+  //     loader: 'file-loader',
+  //     options: {
+  //       // name: '[name].[ext]',
+  //       publicPath: 'static/',
+  //       // outputPath: 'assets/images',
+  //       // esModule: false,
+  //       emitFile: false,
+  //     },
+  //   },
+  // },
 ];
 
 module.exports = (type) => ({

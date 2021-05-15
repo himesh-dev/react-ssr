@@ -13,8 +13,8 @@ const webpackClient = {
   target: 'web',
   output: {
     path: path.join(paths.buildClient, paths.publicPath),
-    filename: 'js/bundle.[contenthash:8].js',
-    chunkFilename: 'js/[name].[contenthash:8].chunk.js',
+    filename: 'js/bundle.[chunkhash:8].js',
+    chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
     publicPath: paths.publicPath,
   },
   plugins: [
