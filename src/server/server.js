@@ -65,10 +65,6 @@ const options = {
 app.get('/favicon.ico', (_, res) => {
   res.send(null);
 });
-app.use((req, res, next) => {
-  console.log(req.originalUrl, path.join(paths.buildClient, paths.publicPath));
-  next();
-});
 app.use(
   paths.publicPath,
   express.static(path.join(paths.buildClient, paths.publicPath), options)

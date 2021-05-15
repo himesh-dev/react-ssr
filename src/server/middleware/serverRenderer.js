@@ -8,6 +8,5 @@ export default function serverRenderer(req, res) {
 
   // res.send('<!doctype html>' + renderToString(<Html>{html}</Html>));
   const UpdatedHtml = Html(html);
-  console.log('UpdatedHtml ---->', UpdatedHtml);
   res.send(UpdatedHtml);
 }

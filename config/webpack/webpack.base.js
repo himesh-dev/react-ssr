@@ -37,10 +37,10 @@ const rulesClient = [
     use: {
       loader: 'url-loader',
       options: {
-        mimetype: 'image/png',
         name: '[name].[ext]',
         publicPath: '/static/assets',
         outputPath: '/assets',
+        encoding: true,
         // emitFile: true,
         limit: false,
       },
@@ -88,18 +88,17 @@ const rulesServer = [
       },
     ],
   },
+  //using url-loader to inline images
   {
     test: /\.(png|jpe?g|gif|svg)$/,
     // type: 'asset/resource',
-    loader: require.resolve('file-loader'),
+    loader: require.resolve('url-loader'),
     options: {
-      mimetype: 'image/png',
+      encoding: true,
       name: '[name].[ext]',
       publicPath: '/static/assets',
       outputPath: '/assets',
-      // esModule: false,
-      emitFile: true,
-      limit: false,
+      emitFile: false,
     },
     // generator: {
     //   filename: 'assets/[name].[hash:8].[ext]',

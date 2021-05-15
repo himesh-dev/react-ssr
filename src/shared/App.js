@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.css';
 import image from '../assets/imageIcon.png';
+import svgIcon from '../assets/expired_page.svg';
 
 const App = () => {
   const clickHandler = () => {
@@ -12,6 +13,7 @@ const App = () => {
         clickme128
       </button>
       <img src={image} height={100} widht={'auto'} alt="expired" />
+      <img src={svgIcon} height={100} widht={'auto'} alt="expired" />
     </div>
   );
 };
