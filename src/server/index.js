@@ -10,6 +10,17 @@ require('@babel/register')({
         extensions: ['.css', '.scss'],
       },
     ],
+    [
+      'file-loader',
+      {
+        name: '[name].[ext]',
+        extensions: ['png', 'jpg', 'jpeg', 'gif', 'svg'],
+        publicPath: '/static/assets',
+        outputPath: '/assets',
+        limit: false,
+        emitFile: false,
+      },
+    ],
     'dynamic-import-node',
   ],
 });
